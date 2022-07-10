@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Practical JavaScript</title>
+
+</head>
+<body>
+  <script>
+    
+
+     var todos = [
+      {todoText: 'Item 1', completed: false},
+      {todoText: 'Item 2', completed: false},
+      {todoText: 'Item 3', completed: false}
+     ];
+     
+     console.log(todos);
+
+    
+
+     function add(initialTodoText) {
+      todos.push({todoText: initialTodoText, completed: false});
+      console.log(todos);
+      }
+      
+      
+      function edit(pos, text) {
+
+      todos[pos].todoText = text;
+      console.log(todos);
+      }
+    
+      
+      
+
+      function remove(pos){
+      todos.splice(pos,1);
+      console.log(todos);
+      }
+
+
+      function toggle(pos) {
+
+        if (todos[pos].completed === false) {
+          todos[pos].completed = true;
+          
+        } else {todos[pos].completed = false;
+          
+        }
+        
+        console.log(todos);
+       
+      }
+    
+
+   
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+    
+
+
+    
+     
+     
+
+
+
+  
+
+
+  
+  
+

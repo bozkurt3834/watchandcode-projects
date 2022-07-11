@@ -15,20 +15,20 @@
       {todoText: 'Item 3', completed: false}
      ];
      
-     console.log(todos);
+     displayTodos();
 
     
 
      function add(initialTodoText) {
       todos.push({todoText: initialTodoText, completed: false});
-      console.log(todos);
+      displayTodos();
       }
       
       
       function edit(pos, text) {
 
       todos[pos].todoText = text;
-      console.log(todos);
+      displayTodos();
       }
     
       
@@ -36,7 +36,7 @@
 
       function remove(pos){
       todos.splice(pos,1);
-      console.log(todos);
+      displayTodos();
       }
 
 
@@ -49,8 +49,16 @@
           
         }
         
-        console.log(todos);
+        displayTodos();
        
+      }
+
+      function displayTodos() {
+
+        for(var i = 0;i<todos.length; i++){
+          console.log(todos[i]);
+        }
+        
       }
     
 

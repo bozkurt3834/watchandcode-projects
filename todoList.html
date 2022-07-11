@@ -6,6 +6,13 @@
 
 </head>
 <body>
+
+
+<button id="display-todos-button">Display todos</button>
+
+<button id="toggle-All-button">Toggle all</button>
+
+
   <script>
     
 
@@ -95,6 +102,14 @@
 
 
       }
+
+      var displayTodosButton = document.getElementById('display-todos-button');
+
+      displayTodosButton.addEventListener('click', displayTodos);
+
+      var toggleAllButton = document.getElementById('toggle-All-button');  
+
+      toggleAllButton.addEventListener('click', toggleAll);
 
 
 

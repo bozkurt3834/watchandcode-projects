@@ -1,3 +1,9 @@
+Version 6
+[x] It should have a function for toggling all todos.
+[x] If: everyhing is true ==> change everyhing to false;
+else: change everyhing to true.
+
+
 
 Version 5
 [x] It should have a function for displaying todos.

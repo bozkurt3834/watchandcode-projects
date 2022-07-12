@@ -8,7 +8,7 @@
 <body>
 
 
-<button id="display-todos-button">Display todos</button>
+
 
 <button id="toggle-All-button">Toggle all</button>
 
@@ -21,8 +21,8 @@
 <input id="edit-position-input">
 <input id="edit-text-input">
 
-<button id="remove-button">Remove</button>
-<input id="remove-position">
+
+
 
 <button id="toggle-a-todo">Toggle a todo</button>
 <input id="toggle-a-todo-position">
@@ -30,6 +30,14 @@
 <ul id="todos-ul">
   
 </ul>
+
+<ul>
+
+  
+</ul>
+
+
+
 
 
   <script>
@@ -74,16 +82,19 @@
       
       
 
-      function remove(){
 
-        var removePosition = removePositionInput.value;
-        todos.splice(removePosition,1);
-        removePositionInput.value = "";
+      function remove(event){
+        
+        
+        console.log("New remove function is running!");
+
+        var position = event.target.id ;
+        todos.splice(position, 1);
         displayTodos();
+
       }
 
-
-
+        
      
       
       
@@ -108,8 +119,7 @@
 
 
 
-  
-
+     
   
 
       
@@ -117,26 +127,56 @@
 
         var todosUl = document.getElementById("todos-ul");
 
+       
+      
+
         todosUl.innerHTML = "";
             
         for(var i = 0;i<todos.length; i++){
-            var todoLi = document.createElement("li");
-
-
+            var todoLi = document.createElement("li") ; 
+            
 
             if (todos[i].completed === true) {
               
 
-              todoLi.innerText = "[X] " + todos[i].todoText ;
+              todoLi.innerText = "[X] " + todos[i].todoText  ;
             } else { 
-              todoLi.innerText = "[ ] " + todos[i].todoText ;
+              todoLi.innerText = "[ ] " + todos[i].todoText  ;
               
             }
 
-             
+            
+            var removeButton= document.createElement("button");
+            removeButton.innerText = "Remove";
+            removeButton.addEventListener("click", remove);
+            removeButton.id = i;
+
+           
+
+            
+           
+
+                
+
+                  
+
+            todoLi.appendChild(removeButton);
             todosUl.appendChild(todoLi);
+            
           }
+
+          
+
+          
+          
+
+            
         }
+            
+        
+
+       
+            
             
             
         
@@ -177,8 +217,7 @@
 
       }
 
-      var displayTodosButton = document.getElementById('display-todos-button');
-      displayTodosButton.addEventListener('click', displayTodos);
+ 
       
 
       var toggleAllButton = document.getElementById('toggle-All-button');  
@@ -196,9 +235,7 @@
       editButton.addEventListener('click', edit);
 
         
-      var removeButton = document.getElementById("remove-button");
-      var removePositionInput = document.getElementById("remove-position");
-      removeButton.addEventListener('click', remove);      
+          
 
             
       var toggleButton = document.getElementById("toggle-a-todo");

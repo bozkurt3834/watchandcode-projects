@@ -1,4 +1,8 @@
-
+Version 8
+[x] There should be  a working button for adding a todo.
+[x] There should be  a working button for editing a todo.
+[x] There should be  a working button for removing a todo.
+[x] There should be  a working button for toggling a todo.
 
 
 

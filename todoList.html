@@ -12,6 +12,22 @@
 
 <button id="toggle-All-button">Toggle all</button>
 
+<button id="add-button">Add</button>
+
+<input id="add-input" >
+
+<button id="edit-button">Edit</button>
+
+<input id="edit-position-input">
+<input id="edit-text-input">
+
+<button id="remove-button">Remove</button>
+<input id="remove-position">
+
+<button id="toggle-a-todo">Toggle a todo</button>
+<input id="toggle-a-todo-position">
+
+
 
   <script>
     
@@ -26,35 +42,59 @@
 
     
 
-     function add(initialTodoText) {
-      todos.push({todoText: initialTodoText, completed: false});
+     function add() {
+      var initialTodoText = addInput.value;
+      todos.push({todoText:initialTodoText , completed: false});
+      addInput.value = ""
       displayTodos();
+      
       }
-      
-      
-      function edit(pos, text) {
 
-      todos[pos].todoText = text;
-      displayTodos();
+     
+      
+      function edit() {
+
+        var editedTodoPosition = editPositionInput.value ;
+        var editedTodoText = editTextInput.value ;
+
+          todos[editedTodoPosition].todoText = editedTodoText;
+          editPositionInput.value = "" ;
+          editTextInput.value = "" ;
+
+        displayTodos();
       }
     
+
+
       
       
 
-      function remove(pos){
-      todos.splice(pos,1);
-      displayTodos();
+      function remove(){
+
+        var removePosition = removePositionInput.value;
+        todos.splice(removePosition,1);
+        removePositionInput.value = "";
+        displayTodos();
       }
 
 
-      function toggle(pos) {
 
-        if (todos[pos].completed === false) {
-          todos[pos].completed = true;
+     
+      
+      
+
+      function toggle() {
+        
+        var toggleaTodoPosition = toggleaTodoPositionInput.value ;
+
+        if (todos[toggleaTodoPosition].completed === false) {
+          todos[toggleaTodoPosition].completed = true;
           
-        } else {todos[pos].completed = false;
+        } else {todos[toggleaTodoPosition].completed = false;
           
         }
+
+        toggleaTodoPositionInput.value = "";
         
         displayTodos();
        
@@ -104,20 +144,65 @@
       }
 
       var displayTodosButton = document.getElementById('display-todos-button');
-
       displayTodosButton.addEventListener('click', displayTodos);
+      
 
       var toggleAllButton = document.getElementById('toggle-All-button');  
-
       toggleAllButton.addEventListener('click', toggleAll);
+      
 
-
-
+      var addButton = document.getElementById("add-button");
+      var addInput = document.getElementById("add-input");
+      addButton.addEventListener('click', add);
             
-          
+      
+      var editButton = document.getElementById("edit-button");
+      var editPositionInput = document.getElementById("edit-position-input");
+      var editTextInput = document.getElementById("edit-text-input");
+      editButton.addEventListener('click', edit);
 
         
-          
+      var removeButton = document.getElementById("remove-button");
+      var removePositionInput = document.getElementById("remove-position");
+      removeButton.addEventListener('click', remove);      
+
+            
+      var toggleButton = document.getElementById("toggle-a-todo");
+      var toggleaTodoPositionInput = document.getElementById("toggle-a-todo-position");
+      toggleButton.addEventListener('click', toggle);
+
+
+
+
+
+      </script>
+    </body>
+</html>
+
+
+
+      
+
+
+
+      
+      
+
+      
+
+
+      
+
+
+
+
+
+
+
+     
+
+        
+    
         
         
         
@@ -125,7 +210,7 @@
           
           
 
-
+      
     
 
       
@@ -139,9 +224,7 @@
 
 
 
-</script>
-</body>
-</html>
+
 
 
 

@@ -13,28 +13,19 @@
 <button id="toggle-All-button">Toggle all</button>
 
 <button id="add-button">Add</button>
-
 <input id="add-input" >
 
-<button id="edit-button">Edit</button>
 
+<button id="edit-button">Edit</button>
 <input id="edit-position-input">
 <input id="edit-text-input">
 
 
-
-
-<button id="toggle-a-todo">Toggle a todo</button>
-<input id="toggle-a-todo-position">
-
-<ul id="todos-ul">
+<ul id="todos-ul"></ul>
   
 </ul>
 
-<ul>
 
-  
-</ul>
 
 
 
@@ -79,51 +70,42 @@
     
 
 
-      
-      
-
-
       function remove(event){
-        
-        
-        console.log("New remove function is running!");
 
-        var position = event.target.id ;
+        var position = event.currentTarget.id.split("-")[1];
+
+        //We get the 'event.currentTarget.id' string 
+        // from the 'removeButton.id' string which is inside the displayTodos() function.//
+
         todos.splice(position, 1);
         displayTodos();
 
       }
-
         
-     
+        
       
       
 
-      function toggle() {
-        
-        var toggleaTodoPosition = toggleaTodoPositionInput.value ;
+      function toggle(event){
 
-        if (todos[toggleaTodoPosition].completed === false) {
-          todos[toggleaTodoPosition].completed = true;
-          
-        } else {todos[toggleaTodoPosition].completed = false;
-          
+        var position = event.currentTarget.id.split("-")[1];
+
+        //We get the 'event.currentTarget.id' string 
+        // from the 'toggleButton.id' string  which is inside the displayTodos() function.//
+
+        if (todos[position].completed === true) {
+          todos[position].completed = false;
+        } else {
+          todos[position].completed = true ;
         }
-
-        toggleaTodoPositionInput.value = "";
-        
         displayTodos();
-       
       }
 
+        
+        
+        
 
-
-
-     
-  
-
-      
-      function displayTodos() {
+        function displayTodos() {
 
         var todosUl = document.getElementById("todos-ul");
 
@@ -149,40 +131,22 @@
             var removeButton= document.createElement("button");
             removeButton.innerText = "Remove";
             removeButton.addEventListener("click", remove);
-            removeButton.id = i;
+            removeButton.id = "remove-" + i;
 
-           
+            var toggleButton = document.createElement("button"); 
+            toggleButton.innerText = "Toggle";
+            toggleButton.addEventListener("click", toggle);
+            toggleButton.id = "toggle-"+ i;
 
-            
-           
-
-                
-
-                  
-
+            todoLi.appendChild(toggleButton);  
             todoLi.appendChild(removeButton);
             todosUl.appendChild(todoLi);
-            
+                      
           }
 
-          
+          }
 
-          
-          
-
-            
-        }
-            
-        
-
-       
-            
-            
-            
-        
-        
-
-      function toggleAll() {
+           function toggleAll() {
 
        var completedTodos = 0;
 
@@ -216,11 +180,9 @@
 
 
       }
+          
 
- 
-      
-
-      var toggleAllButton = document.getElementById('toggle-All-button');  
+       var toggleAllButton = document.getElementById('toggle-All-button');  
       toggleAllButton.addEventListener('click', toggleAll);
       
 
@@ -234,21 +196,62 @@
       var editTextInput = document.getElementById("edit-text-input");
       editButton.addEventListener('click', edit);
 
+      </script>
+    </body>
+</html>  
+      
         
+     
+      
+      
+
+     
+
+
+
+     
+  
+
+      
+          
+        
+
           
 
             
-      var toggleButton = document.getElementById("toggle-a-todo");
-      var toggleaTodoPositionInput = document.getElementById("toggle-a-todo-position");
-      toggleButton.addEventListener('click', toggle);
+           
+
+                
+
+                  
+
+            
+            
+            
+        
+
+       
+            
+            
+            
+        
+        
+
+      
+
+ 
+      
+
+       
+          
+
+            
+     
 
 
 
 
-
-      </script>
-    </body>
-</html>
+      
 
 
 
